@@ -313,10 +313,11 @@ public class AutoDoEverything extends AutoBaseClass {
             case 500:
                 stop();
                 break;
-            }
-        }
+            } // end of switch statement
+        } //end of isRunning
 
         SmartDashboard.putBoolean("Hatch running", isRunning());
         SmartDashboard.putNumber("tx", Vision.tx());
-    }
-}
+
+    } //end of tick statement
+} //end of extends statement

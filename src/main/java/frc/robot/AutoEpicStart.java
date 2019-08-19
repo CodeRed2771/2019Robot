@@ -43,17 +43,17 @@ public class AutoEpicStart extends AutoBaseClass {
                         break;
                     
                     
-                    }
+                    } //end of switch statement
 
                 
-            }
+            } //end of isRunning statement
 
 
-        }
+        } //end of tick statement
 
 
     
-}
+} //end of extends statement
 
 
 
