@@ -158,9 +158,9 @@ public class AutoDoEverything extends AutoBaseClass {
                 if (numberOfHatchesUsed == 1) {
                     advanceStep();
                 } else if (numberOfHatchesUsed == 2) { 
-                    setStep(17);
+                    setStep(20);
                 } else if (numberOfHatchesUsed >= 3) {
-                    setStep(21);
+                    setStep(27);
                 } else {
                     advanceStep();
                 }
@@ -172,53 +172,44 @@ public class AutoDoEverything extends AutoBaseClass {
             case 13:
                 if (robotPosition() == Position.LEFT) {
                     driveInches(12, 150, 1);
-                        if (driveCompleted()) {
-                            advanceStep();
-                        }
                 } else if (robotPosition() == Position.CENTER) {
                     driveInches(12, 180, 1);
-                        if (driveCompleted()) {
-                            advanceStep();
-                        }
                 } else if (robotPosition() == Position.RIGHT) {
                     driveInches(12, 240, 1);
-                        if (driveCompleted()) {
-                            advanceStep();
-                        }
                 }
+                advanceStep();
                 break;
             case 14:
+                if (driveCompleted()) {
+                    advanceStep();
+                }
+            case 15:
                 if (robotPosition() == Position.LEFT) {
                     turnDegrees(-150, 1);
-                        if (turnCompleted()) {
-                            advanceStep();
-                        }
                 } else if (robotPosition() == Position.CENTER) {
                     turnDegrees(180, 1);
-                        if (turnCompleted()) {
-                            advanceStep();
-                        }
                 } else if (robotPosition() == Position.RIGHT) {
                     turnDegrees(150, 1);
-                        if (turnCompleted()) {
-                            advanceStep();
-                        }
                 }
-                break;
-            case 15:
-                if (robotPosition() == Position.LEFT || robotPosition() == Position.RIGHT) {
-                    driveInches(100, 180, 1);
-                        if (driveCompleted()) {
-                            advanceStep();
-                        }
-                } else if (robotPosition() == Position.CENTER) {
-                    driveInches(100, 240, 1);
-                        if (driveCompleted()) {
-                            advanceStep();
-                        }
-                } 
+                advanceStep();
                 break;
             case 16:
+                if (turnCompleted()) {
+                    advanceStep();
+                }
+            case 17:
+                if (robotPosition() == Position.LEFT || robotPosition() == Position.RIGHT) {
+                    driveInches(100, 180, 1);
+                } else if (robotPosition() == Position.CENTER) {
+                    driveInches(100, 240, 1);
+                } 
+                advanceStep();
+                break;
+            case 18: 
+                if (driveCompleted()) {
+                    advanceStep();
+                }
+            case 19:
                 setActionMode(ActionMode.GET_HATCH);
                 setStep(1);
                 break;
@@ -235,47 +226,52 @@ public class AutoDoEverything extends AutoBaseClass {
             // advanceStep();
             // }
             // break;
-            case 17:
+            case 20:
                 Manipulator.fingerUp();
                 advanceStep();
                 break;
-            case 18:
+            case 21:
                 driveInches(12, 0, 1);
+                advanceStep();
+                break;
+            case 22:
                 if (driveCompleted()) {
                     setActionMode(ActionMode.PLACE_HATCH);
                     advanceStep();
                 }
-                break;
-            case 19:
+            case 23:
                 turnDegrees(180, 1);
+                advanceStep();
+                break;
+            case 24:
                 if (turnCompleted()) {
                     advanceStep();
                 }
-                break;
-            case 20: 
+            case 25: 
                 driveInches(100, 0, 1);
+                advanceStep();
+                break;
+            case 26:
                 if (driveCompleted()) {
                     setStep(1);
                 }
-                break;
-            case 21:
+            case 27:
                 Manipulator.moveFingerDown();
                 advanceStep();
                 break;
-            case 22:
+            case 28:
                 if (robotPosition() == Position.LEFT || robotPosition() == Position.CENTER) {
                     driveInches(12, 150, 1);
-                    if (driveCompleted()) {
-                        advanceStep();
-                    }
                 } else if (robotPosition() == Position.RIGHT) {
                     driveInches(12, 240, 1);
-                    if (driveCompleted()) {
-                        advanceStep();
-                    }
                 }
+                advanceStep();
                 break;
-            case 23:
+            case 29:
+                if (driveCompleted()) {
+                    advanceStep();
+                }
+            case 30:
                 setActionMode(ActionMode.JUST_DRIVE);
                 setStep(39);
                 break;
