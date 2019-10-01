@@ -183,6 +183,7 @@ public class AutoDoEverything extends AutoBaseClass {
                 if (driveCompleted()) {
                     advanceStep();
                 }
+                break;
             case 15:
                 if (robotPosition() == Position.LEFT) {
                     turnDegrees(-150, 1);
@@ -197,6 +198,7 @@ public class AutoDoEverything extends AutoBaseClass {
                 if (turnCompleted()) {
                     advanceStep();
                 }
+                break;
             case 17:
                 if (robotPosition() == Position.LEFT || robotPosition() == Position.RIGHT) {
                     driveInches(100, 180, 1);
@@ -239,6 +241,7 @@ public class AutoDoEverything extends AutoBaseClass {
                     setActionMode(ActionMode.PLACE_HATCH);
                     advanceStep();
                 }
+                break;
             case 23:
                 turnDegrees(180, 1);
                 advanceStep();
@@ -247,6 +250,7 @@ public class AutoDoEverything extends AutoBaseClass {
                 if (turnCompleted()) {
                     advanceStep();
                 }
+                break;
             case 25: 
                 driveInches(100, 0, 1);
                 advanceStep();
@@ -255,6 +259,7 @@ public class AutoDoEverything extends AutoBaseClass {
                 if (driveCompleted()) {
                     setStep(1);
                 }
+                break;
             case 27:
                 Manipulator.moveFingerDown();
                 advanceStep();
@@ -271,6 +276,7 @@ public class AutoDoEverything extends AutoBaseClass {
                 if (driveCompleted()) {
                     advanceStep();
                 }
+                break;
             case 30:
                 setActionMode(ActionMode.JUST_DRIVE);
                 setStep(39);
