@@ -171,11 +171,12 @@ public class AutoDoEverything extends AutoBaseClass {
                 break;
             case 13:
                 if (robotPosition() == Position.LEFT) {
-                    driveInches(12, 150, 1);
+                    driveInches(12, 120, 1);
+                    System.out.println("trying to get out of case 13");
                 } else if (robotPosition() == Position.CENTER) {
                     driveInches(12, 180, 1);
                 } else if (robotPosition() == Position.RIGHT) {
-                    driveInches(12, 240, 1);
+                    driveInches(12, 220, 1);
                 }
                 advanceStep();
                 break;
