@@ -21,7 +21,7 @@ public class AutoEpicStart extends AutoBaseClass {
                         } else if (robotPosition () == Position.CENTER) {
                             driveInches(40, 0, 1);
                         } else if (robotPosition() == Position.RIGHT) {
-                            driveInches(30, 90, 1);
+                            driveInches(90, 60, 1);
                         } else {
                             driveInches(10, 0, 1);
                         }

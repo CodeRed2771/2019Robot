@@ -178,7 +178,7 @@ public class AutoDoEverything extends AutoBaseClass {
                 } else if (robotPosition() == Position.RIGHT) {
                     driveInches(12, 220, 1);
                 }
-                advanceStep();
+                setTimerAndAdvanceStep(4000);
                 break;
             case 14:
                 if (driveCompleted()) {
@@ -193,7 +193,7 @@ public class AutoDoEverything extends AutoBaseClass {
                 } else if (robotPosition() == Position.RIGHT) {
                     turnDegrees(150, 1);
                 }
-                advanceStep();
+                setTimerAndAdvanceStep(4000);
                 break;
             case 16:
                 if (turnCompleted()) {
@@ -206,7 +206,7 @@ public class AutoDoEverything extends AutoBaseClass {
                 } else if (robotPosition() == Position.CENTER) {
                     driveInches(100, 240, 1);
                 } 
-                advanceStep();
+                setTimerAndAdvanceStep(4000);
                 break;
             case 18: 
                 if (driveCompleted()) {
@@ -235,7 +235,7 @@ public class AutoDoEverything extends AutoBaseClass {
                 break;
             case 21:
                 driveInches(12, 0, 1);
-                advanceStep();
+                setTimerAndAdvanceStep(2000);
                 break;
             case 22:
                 if (driveCompleted()) {
@@ -245,7 +245,7 @@ public class AutoDoEverything extends AutoBaseClass {
                 break;
             case 23:
                 turnDegrees(180, 1);
-                advanceStep();
+                setTimerAndAdvanceStep(2000);
                 break;
             case 24:
                 if (turnCompleted()) {
@@ -254,7 +254,7 @@ public class AutoDoEverything extends AutoBaseClass {
                 break;
             case 25: 
                 driveInches(100, 0, 1);
-                advanceStep();
+                setTimerAndAdvanceStep(4000);
                 break;
             case 26:
                 if (driveCompleted()) {
@@ -271,7 +271,7 @@ public class AutoDoEverything extends AutoBaseClass {
                 } else if (robotPosition() == Position.RIGHT) {
                     driveInches(12, 240, 1);
                 }
-                advanceStep();
+                setTimerAndAdvanceStep(2000);
                 break;
             case 29:
                 if (driveCompleted()) {
@@ -370,7 +370,7 @@ public class AutoDoEverything extends AutoBaseClass {
                 }
                 break;
             case 65:
-                setStep(1);
+                setStep(0);
                 break;
 
             /////////////////////////////////////////////////////////////////////////
