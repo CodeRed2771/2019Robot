@@ -22,6 +22,7 @@ public class KeyMap {
     private final HID.Button switchToRobotCentric = LogitechExtreme3D.Thumb;
     private final HID.Button autoAlignToTarget = LogitechExtreme3D.Button7;
     private final HID.Button turnToBackTarget = LogitechExtreme3D.Button5;
+    private final HID.Button autoPlaceHatch = LogitechExtreme3D.Button7;
     
 
     private final HID.Button zeroGyro = LogitechExtreme3D.Button8;
@@ -94,6 +95,10 @@ public class KeyMap {
 
     public boolean getRobotCentricModifier() {
         return getHID(gamepad1).button(switchToRobotCentric);
+    }
+
+    public boolean getAutoPlaceHatch() {
+        return getHID(gamepad1).button(autoPlaceHatch);
     }
 
     public boolean getZeroGyro() {
