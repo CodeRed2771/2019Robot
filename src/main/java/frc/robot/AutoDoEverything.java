@@ -134,12 +134,7 @@ public class AutoDoEverything extends AutoBaseClass {
                 }
                 break;
             case 8:
-                if (numberOfHatchesUsed == 2) {
-                    Lift.goHatchLvl2();
-                    advanceStep();
-                } else {
-                    advanceStep();
-                }
+                advanceStep();
                 break;
             case 9:
             //We added this - Who is we? - Me
@@ -154,132 +149,7 @@ public class AutoDoEverything extends AutoBaseClass {
                 Lift.goHeight(liftHeight);
                 break;
             case 11:
-                numberOfHatchesUsed++;
-                if (numberOfHatchesUsed == 1) {
-                    advanceStep();
-                } else if (numberOfHatchesUsed == 2) { 
-                    setStep(20);
-                } else if (numberOfHatchesUsed >= 3) {
-                    setStep(27);
-                } else {
-                    advanceStep();
-                }
-                break;
-            case 12:
-                Manipulator.moveFingerDown();
-                advanceStep();
-                break;
-            case 13:
-                if (robotPosition() == Position.LEFT) {
-                    driveInches(12, 120, 1);
-                    System.out.println("trying to get out of case 13");
-                } else if (robotPosition() == Position.CENTER) {
-                    driveInches(12, 180, 1);
-                } else if (robotPosition() == Position.RIGHT) {
-                    driveInches(12, 220, 1);
-                }
-                setTimerAndAdvanceStep(4000);
-                break;
-            case 14:
-                if (driveCompleted()) {
-                    advanceStep();
-                }
-                break;
-            case 15:
-                if (robotPosition() == Position.LEFT) {
-                    turnDegrees(-150, 1);
-                } else if (robotPosition() == Position.CENTER) {
-                    turnDegrees(180, 1);
-                } else if (robotPosition() == Position.RIGHT) {
-                    turnDegrees(150, 1);
-                }
-                setTimerAndAdvanceStep(4000);
-                break;
-            case 16:
-                if (turnCompleted()) {
-                    advanceStep();
-                }
-                break;
-            case 17:
-                if (robotPosition() == Position.LEFT || robotPosition() == Position.RIGHT) {
-                    driveInches(100, 180, 1);
-                } else if (robotPosition() == Position.CENTER) {
-                    driveInches(100, 240, 1);
-                } 
-                setTimerAndAdvanceStep(4000);
-                break;
-            case 18: 
-                if (driveCompleted()) {
-                    advanceStep();
-                }
-            case 19:
-                setActionMode(ActionMode.GET_HATCH);
-                setStep(1);
-                break;
-            // case 10:
-            // if (drivingAllowed) {
-            // driveInches(distToStayBackOnFirstDrive, 0, .2, false);
-            // setTimerAndAdvanceStep(1000);
-            // } else {
-            // setTimerAndAdvanceStep(20);
-            // }
-            // break;
-            // case 11:
-            // if (DriveAuto.hasArrived()) {
-            // advanceStep();
-            // }
-            // break;
-            case 20:
-                Manipulator.fingerUp();
-                advanceStep();
-                break;
-            case 21:
-                driveInches(12, 0, 1);
-                setTimerAndAdvanceStep(2000);
-                break;
-            case 22:
-                if (driveCompleted()) {
-                    setActionMode(ActionMode.PLACE_HATCH);
-                    advanceStep();
-                }
-                break;
-            case 23:
-                turnDegrees(180, 1);
-                setTimerAndAdvanceStep(2000);
-                break;
-            case 24:
-                if (turnCompleted()) {
-                    advanceStep();
-                }
-                break;
-            case 25: 
-                driveInches(100, 0, 1);
-                setTimerAndAdvanceStep(4000);
-                break;
-            case 26:
-                if (driveCompleted()) {
-                    setStep(1);
-                }
-                break;
-            case 27:
-                Manipulator.moveFingerDown();
-                advanceStep();
-                break;
-            case 28:
-                if (robotPosition() == Position.LEFT || robotPosition() == Position.CENTER) {
-                    driveInches(12, 150, 1);
-                } else if (robotPosition() == Position.RIGHT) {
-                    driveInches(12, 240, 1);
-                }
-                setTimerAndAdvanceStep(2000);
-                break;
-            case 29:
-                if (driveCompleted()) {
-                    advanceStep();
-                }
-                break;
-            case 30:
-                setActionMode(ActionMode.JUST_DRIVE);
+                setActionMode(actionMode.JUST_DRIVE);
                 setStep(39);
                 break;
             case 39:
