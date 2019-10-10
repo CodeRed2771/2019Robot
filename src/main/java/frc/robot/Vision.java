@@ -192,6 +192,7 @@ public class Vision {
 		double targetOffsetAngle_Vertical = table.getEntry("ty").getDouble(0);
 		double targetArea = table.getEntry("ta").getDouble(0);
 		double targetSkew = table.getEntry("ts").getDouble(0);
+		
 		double targetCount = table.getEntry("tv").getDouble(0);
 
 		SmartDashboard.putNumber("Target Area", targetArea);
