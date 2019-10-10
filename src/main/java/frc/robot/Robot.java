@@ -225,6 +225,12 @@ public class Robot extends TimedRobot {
 			Climber.climberRetractFull();
 		}
 
+		if (gamepad.getAutoEpicStart()) {
+			mAutoProgram.stop();
+			mAutoProgram = new AutoEpicStart();
+			mAutoProgram.start(AutoBaseClass.Position.LEFT);
+		}
+
 		// SLIDE LEFT
 		if (gamepad.shipMoveLeft() && !mAutoProgram.isRunning()) {
 			mAutoProgram = new AutoSlideOver();

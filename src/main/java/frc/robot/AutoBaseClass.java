@@ -52,6 +52,7 @@ public abstract class AutoBaseClass {
         this.mTargetType = targetType;
 		start();
 	}
+	
 	public void start(Direction direction) {
 		mDirection = direction;
 		start();

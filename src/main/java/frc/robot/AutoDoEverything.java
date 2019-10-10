@@ -1,5 +1,8 @@
 package frc.robot;
 
+
+// import org.graalvm.compiler.graph.Position;
+
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Manipulator.ManipulatorState;
 
@@ -29,6 +32,7 @@ public class AutoDoEverything extends AutoBaseClass {
 
     public void start() {
         super.start();
+    
         Vision.setTargetTrackingMode();
     }
 
@@ -45,6 +49,8 @@ public class AutoDoEverything extends AutoBaseClass {
         drivingAllowed = isDrivingAllowed;
     }
 
+    int numberOfHatchesUsed = 0;
+
     public void tick() {
 
         if (isRunning()) {
@@ -53,11 +59,10 @@ public class AutoDoEverything extends AutoBaseClass {
             SmartDashboard.putNumber("Hatch Step", getCurrentStep());
 
             switch (getCurrentStep()) {
-            case 1:
+            case 0:
                 // keep scanning for a distance reading
                 distanceToTarget = Vision.getDistanceFromTarget();
                 if (distanceToTarget > 0) {
-                    advanceStep();
                     setStep(3);
                 }
                 break;
@@ -77,7 +82,7 @@ public class AutoDoEverything extends AutoBaseClass {
 
             case 3:
                 Manipulator.setLinkageForPlacement();
-                targetAngle = TargetInfo.targetAngle(mTargetType);
+                targetAngle = TargetInfo.targetAngle(frc.robot.TargetInfo.TargetType.ROCKET_TARGET);
                 angleDiff = RobotGyro.getClosestTurn(targetAngle);
                 // angleDiff = targetAngle - RobotGyro.getRelativeAngle();
                 DriveAuto.turnDegrees(angleDiff, 1); // Square up with target
@@ -129,38 +134,29 @@ public class AutoDoEverything extends AutoBaseClass {
                 }
                 break;
             case 8:
-            //We added this
+                advanceStep();
+                break;
+            case 9:
+            //We added this - Who is we? - Me
                 driveInches(distanceToTarget + 12, 0, 1, true); 
                 setTimerAndAdvanceStep(4000);
                 break;
-            case 9:
+            case 10:
                 if (DriveAuto.isAgainstWall() || DriveAuto.hasArrived()) {
                     //System.out.println("CURRENT TRIPPED!!!!!"); ~Code Menace
                     advanceStep();
                 }
                 Lift.goHeight(liftHeight);
                 break;
-            case 10:
-                setStep(12);
+            case 11:
+                setActionMode(actionMode.JUST_DRIVE);
+                setStep(39);
                 break;
-            // case 10:
-            // if (drivingAllowed) {
-            // driveInches(distToStayBackOnFirstDrive, 0, .2, false);
-            // setTimerAndAdvanceStep(1000);
-            // } else {
-            // setTimerAndAdvanceStep(20);
-            // }
-            // break;
-            // case 11:
-            // if (DriveAuto.hasArrived()) {
-            // advanceStep();
-            // }
-            // break;
-            case 12:
+            case 39:
                 if (actionMode == ActionMode.JUST_DRIVE) {
                     setStep(500);
                 } else if (actionMode == ActionMode.GET_HATCH) {
-                    setStep(20);
+                    setStep(110);
                 } else if (actionMode == ActionMode.GET_CARGO) {
                     setStep(40);
                 } else if (actionMode == ActionMode.PLACE_HATCH) {
@@ -170,31 +166,6 @@ public class AutoDoEverything extends AutoBaseClass {
                 } else {
                     setStep(500);
                 }
-                break;
-                
-            /////////////////////////////////////////////////////////////////////////
-            // Get HATCH
-            /////////////////////////////////////////////////////////////////////////
-            case 20:
-                DriveAuto.stopDriving();
-                Manipulator.holdGamePieceOverride();
-                advanceStep();
-                break;
-            case 21:
-                setTimerAndAdvanceStep(200);
-                break;
-            case 22:
-                DriveAuto.driveInches(-30, 0, 1);
-                setTimerAndAdvanceStep(2000);
-                break;
-            case 23:
-                if (DriveAuto.hasArrived()) {
-                    advanceStep();
-                }
-                break;
-            case 24:
-                DriveAuto.stopDriving();
-                setStep(500);
                 break;
 
             /////////////////////////////////////////////////////////////////////////
@@ -269,7 +240,7 @@ public class AutoDoEverything extends AutoBaseClass {
                 }
                 break;
             case 65:
-                setStep(1);
+                setStep(0);
                 break;
 
             /////////////////////////////////////////////////////////////////////////
@@ -303,6 +274,31 @@ public class AutoDoEverything extends AutoBaseClass {
                 }
                 break;
             case 96:
+                DriveAuto.stopDriving();
+                setStep(500);
+                break;
+
+            /////////////////////////////////////////////////////////////////////////
+            // Get HATCH
+            /////////////////////////////////////////////////////////////////////////
+            case 110:
+                DriveAuto.stopDriving();
+                Manipulator.holdGamePieceOverride();
+                advanceStep();
+                break;
+            case 111:
+                setTimerAndAdvanceStep(200);
+                break;
+            case 112:
+                DriveAuto.driveInches(-30, 0, 1);
+                setTimerAndAdvanceStep(2000);
+                break;
+            case 113:
+                if (DriveAuto.hasArrived()) {
+                    advanceStep();
+                }
+                break;
+            case 114:
                 DriveAuto.stopDriving();
                 setStep(500);
                 break;

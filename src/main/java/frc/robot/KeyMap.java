@@ -22,6 +22,7 @@ public class KeyMap {
     private final HID.Button switchToRobotCentric = LogitechExtreme3D.Thumb;
     private final HID.Button autoAlignToTarget = LogitechExtreme3D.Button7;
     private final HID.Button turnToBackTarget = LogitechExtreme3D.Button5;
+    private final HID.Button autoPlaceHatch = LogitechExtreme3D.Button7;
     
 
     private final HID.Button zeroGyro = LogitechExtreme3D.Button8;
@@ -30,10 +31,11 @@ public class KeyMap {
 
     // Climbing
     private final HID.Button climb = LogitechExtreme3D.Button11;
-    private final HID.Button driveModifier = LogitechExtreme3D.Button1;
+    private final HID.Button driveModifier = LogitechExtreme3D.Thumb;
     private final HID.Button undoClimb = LogitechExtreme3D.Button12;
     
     // Auto Programs
+    private final HID.Button autoEpicStartButton = LogitechExtreme3D.Button9;
    // private final HID.Button shipMoveLeft = LogitechF310.DPAD_LEFT;
    // private final HID.Button shipMoveRight = LogitechF310.DPAD_RIGHT;
     private final HID.Button findRocketTarget = LogitechExtreme3D.Button3;
@@ -95,12 +97,20 @@ public class KeyMap {
         return getHID(gamepad1).button(switchToRobotCentric);
     }
 
+    public boolean getAutoPlaceHatch() {
+        return getHID(gamepad1).button(autoPlaceHatch);
+    }
+
     public boolean getZeroGyro() {
         return getHID(gamepad1).button(zeroGyro);
     }
 
     public double getSwerveRotAxis() {
         return getHID(gamepad1).axis(swerveRotAxis);
+    }
+
+    public boolean getAutoEpicStart() {
+        return getHID(gamepad1).button(autoEpicStartButton);
     }
 
     public boolean activateCargoIntake() {
@@ -187,13 +197,11 @@ public class KeyMap {
     }
     
     public boolean getClimb() {
-        //return getHID(gamepad1).button(driveModifier) && getHID(gamepad1).button(climb);
-        return false;
+        return getHID(gamepad1).button(driveModifier) && getHID(gamepad1).button(climb);
     }
 
     public boolean getUndoClimb() {
-        //return getHID(gamepad1).button(driveModifier) && getHID(gamepad1).button(undoClimb);
-        return false;
+        return getHID(gamepad1).button(driveModifier) && getHID(gamepad1).button(undoClimb);
     }
 
     public boolean getAutoAlignToTarget() {
@@ -219,8 +227,7 @@ public class KeyMap {
     // }
 
     public boolean getDriveModifier() {
-        //return getHID(gamepad1).button(driveModifier);
-        return false;
+        return getHID(gamepad1).button(driveModifier);
     }
 
     // public boolean driveOffPlatform() {
