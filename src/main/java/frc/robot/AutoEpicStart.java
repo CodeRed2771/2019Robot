@@ -449,7 +449,69 @@ public class AutoEpicStart extends AutoBaseClass {
                     case 62:
                         Manipulator.fingerUp();
                         break;
+                    case 63:
+                        driveInches(12, 180, 1);
+                        break;
+
+                    case 64:
+                        Lift.goHatchLvl1();
+                        break;
+                    case 65:
+                        DriveAuto.turnDegrees(180, 1);
+                        break;
+                    case 66:
+                        driveInches(30, 0, 1);
+                        break;
+                    case 67:
+                        distanceToTarget = Vision.getDistanceFromTarget();
+                        if (distanceToTarget > 0){
+                            advanceStep();
+                        }
+                        else 
+                        stop();
+                        break;
+                    case 68:
+                        Manipulator.setLinkageForPlacement();
+                        targetAngle = TargetInfo.targetAngle(frc.robot.TargetInfo.TargetType.FEEDER_TARGET);
+                        angleDiff = RobotGyro.getClosestTurn(targetAngle);
+                        // angleDiff = targetAngle - RobotGyro.getRelativeAngle();
+                        DriveAuto.turnDegrees(angleDiff, 1); // Square up with target
+                        setTimerAndAdvanceStep(1000);
+                        break;
+                    case 69:
+                        if (DriveAuto.turnCompleted()) {
+                            advanceStep();
+                        }
+                        break;
+                    case 70:
+                        slideDistance = -((Math.sin(Math.toRadians(angleDiff)) * distanceToTarget)) + 2;
+                        SmartDashboard.putNumber("Slide Dist", slideDistance);
+                        driveInches(slideDistance, 90, 1, false);
+                        setTimerAndAdvanceStep(3000);
+                        break;
+                    case 71:
+                        if (DriveAuto.hasArrived()) {
+                            advanceStep();
+                        }
+                        break;
+                    case 72:
+                        // keep scanning for a distance reading
+                        distanceToTarget = Vision.getDistanceFromTarget();
+                        if (distanceToTarget > 0) {
+                            advanceStep();
+                        }
+                        break;
+                    case 73:
+                        DriveAuto.driveInches(distanceToTarget + 12, 0, 1);
+                        setTimerAndAdvanceStep(4000);
+                        break;
+                    case 74:
+                        if (DriveAuto.hasArrived()){
+                            advanceStep();
+                        }
+                        break;
                         
+
 
                     
                     } //end of switch statement
