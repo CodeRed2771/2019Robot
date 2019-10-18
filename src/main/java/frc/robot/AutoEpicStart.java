@@ -60,6 +60,146 @@ public class AutoEpicStart extends AutoBaseClass {
 
             switch(getCurrentStep()){
 
+                    // case 0:
+                        
+                    //     if (robotPosition () == Position.LEFT) {
+                    //         driveInches(120, 270, 1);
+                    //     } else if (robotPosition () == Position.CENTER) {
+                    //         driveInches(75, 0, 1);
+                    //     } else if (robotPosition() == Position.RIGHT) {
+                    //         driveInches(120, 90, 1);
+                    //     }
+                    //     setTimerAndAdvanceStep(3000);
+                    //     break;
+
+                    // case 1: 
+
+                    //     if (driveCompleted()) {
+                    //         advanceStep();
+                    //     }
+                    //     break;
+                    
+                    // case 2: 
+
+                    //     if (robotPosition() == Position.LEFT || robotPosition() == Position.RIGHT) {
+                    //         driveInches(80, 0, 1);
+                    //     } else if (robotPosition() == Position.CENTER) {
+                    //         turnDegrees(15, 1);
+                    //     }
+                    //     setTimerAndAdvanceStep(2000);
+                    //     break;
+                    
+                    // case 3:
+
+                    //     if (driveCompleted()) {
+                    //         advanceStep();
+                    //     } else if (turnCompleted()) {
+                    //         advanceStep();
+                    //     }
+                    //     break;
+
+                    // case 4:
+
+                    //     if (robotPosition() == Position.LEFT) {
+                    //         driveInches(3, 90, 1);
+                    //     } else if (robotPosition() == Position.RIGHT) {
+                    //         driveInches(3, 270, 1);
+                    //     }
+                    //     setTimerAndAdvanceStep(1000);
+                    //     break;
+                    
+                    // case 5: 
+
+                    //     if (driveCompleted()) {
+                    //         advanceStep();
+                    //     } else {
+                    //         advanceStep();
+                    //     }
+                    //     break;
+                    
+                    // case 6:
+
+                    //     distanceToTarget = Vision.getDistanceFromTarget();
+                    //     if (distanceToTarget > 0) {
+                    //     }
+                    //     break;
+        
+                    // case 7:
+
+                    //     Manipulator.setLinkageForPlacement();
+                    //     targetAngle = TargetInfo.targetAngle(frc.robot.TargetInfo.TargetType.ROCKET_TARGET);
+                    //     angleDiff = RobotGyro.getClosestTurn(targetAngle);
+                    //     DriveAuto.turnDegrees(angleDiff, 1); 
+                    //     setTimerAndAdvanceStep(1000);
+                    //     break;
+
+                    // case 8:
+
+                    //     if (DriveAuto.turnCompleted()) {
+                    //         advanceStep();
+                    //     }
+                    //     break;
+
+                    // case 9:
+
+                    //     double slideDistance = -((Math.sin(Math.toRadians(angleDiff)) * distanceToTarget)) + 2;
+                    //     SmartDashboard.putNumber("Slide Dist", slideDistance);
+                    //     driveInches(slideDistance, 90, 1, false);
+                    //     setTimerAndAdvanceStep(3000);
+                    //     break;
+
+                    // case 10:
+
+                    //     if (DriveAuto.hasArrived()) {
+                    //         advanceStep();
+                    //     }
+                    //     break;
+
+                    // case 11:
+
+                    //     distanceToTarget = Vision.getDistanceFromTarget();
+                    //     if (distanceToTarget > 0) {
+                    //         advanceStep();
+                    //     }
+                    //     break;
+
+                    // case 12:
+
+                    //     if (numberOfHatchesUsed == 2) {
+                    //         Lift.goHatchLvl2();
+                    //         advanceStep();
+                    //     } else {
+                    //         advanceStep();
+                    //     }
+                    //     break;
+
+                    // case 13:
+
+                    //     driveInches(distanceToTarget + 20, 0, 1, true);
+                    //     setTimerAndAdvanceStep(4000);
+                    //     break;
+
+                    // case 14:
+
+                    //     if (DriveAuto.isAgainstWall() || DriveAuto.hasArrived()) {
+                    //         setStep(15);
+                    //     }
+                    //     break;
+
+                    // case 15:
+
+                    //     Manipulator.moveFingerDown();
+                    //     stop();
+                    //     break;
+                    
+
+                        
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+        EXTRAVAGENT AUTON
+*/
+
                     case 0:
                         if (robotPosition () == Position.LEFT) {
                             driveInches(90, 300, 1);
