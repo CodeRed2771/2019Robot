@@ -31,10 +31,10 @@ public class Calibration {
 	
 	// COMPETIION
 	
-	private final static double DT_A_ABS_ZERO_INITIAL = .994; // COMPEITION
-	private final static double DT_B_ABS_ZERO_INITIAL = .462;
-	private final static double DT_C_ABS_ZERO_INITIAL = .071;
-	private final static double DT_D_ABS_ZERO_INITIAL = .588;
+	private final static double DT_A_ABS_ZERO_INITIAL = .351; // COMPEITION
+	private final static double DT_B_ABS_ZERO_INITIAL = .540;
+	private final static double DT_C_ABS_ZERO_INITIAL = .034;
+	private final static double DT_D_ABS_ZERO_INITIAL = .954;
 	
 	public final static double VISION_FWD_P = 0.05;
 	public final static double VISION_FWD_I = 0;
