@@ -58,71 +58,32 @@ public class AutoEpicStart extends AutoBaseClass {
 
             DriveAuto.tick();
 
-            switch(getCurrentStep()){
+            switch(getCurrentStep()) {
 
                     case 0:
                         
                         if (robotPosition () == Position.LEFT) {
-                            driveInches(120, 270, 1);
+                            driveInches(120, 315, 1);
                         } else if (robotPosition () == Position.CENTER) {
-                            driveInches(75, 0, 1);
+                            driveInches(110, 0, 1);
                         } else if (robotPosition() == Position.RIGHT) {
-                            driveInches(120, 90, 1);
+                            driveInches(120, 45, 1);
                         }
-                        setTimerAndAdvanceStep(3000);
+                        setTimerAndAdvanceStep(5000);
                         break;
 
                     case 1: 
 
                         if (driveCompleted()) {
-                            advanceStep();
+                            setStep(3);
                         }
                         break;
                     
-                    case 2: 
-
-                        if (robotPosition() == Position.LEFT || robotPosition() == Position.RIGHT) {
-                            driveInches(80, 0, 1);
-                        } else if (robotPosition() == Position.CENTER) {
-                            turnDegrees(15, 1);
-                        }
-                        setTimerAndAdvanceStep(2000);
-                        break;
-                    
-                    case 3:
-
-                        if (driveCompleted()) {
-                            advanceStep();
-                        } else if (turnCompleted()) {
-                            advanceStep();
-                        }
-                        break;
-
-                    case 4:
-
-                        if (robotPosition() == Position.LEFT) {
-                            driveInches(6, 90, 1);
-                        } else if (robotPosition() == Position.CENTER) {
-                            driveInches(3, 0, 1);
-                        } else if (robotPosition() == Position.RIGHT) {
-                            driveInches(6, 270, 1);
-                        }
-                        setTimerAndAdvanceStep(0500);
-                        break;
-                    
-                    case 5: 
-
-                        if (driveCompleted()) {
-                            advanceStep();
-                        } else {
-                            advanceStep();
-                        }
-                        break;
-                    
-                    case 6:
+                   case 3:
 
                         distanceToTarget = Vision.getDistanceFromTarget();
                         if (distanceToTarget > 0) {
+                            setStep(7);
                         }
                         break;
         

@@ -228,7 +228,7 @@ public class Robot extends TimedRobot {
 		if (gamepad.getAutoEpicStart()) {
 			mAutoProgram.stop();
 			mAutoProgram = new AutoEpicStart();
-			mAutoProgram.start(AutoBaseClass.Position.LEFT);
+			mAutoProgram.start(AutoBaseClass.Position.CENTER);
 		}
 
 		// SLIDE LEFT
