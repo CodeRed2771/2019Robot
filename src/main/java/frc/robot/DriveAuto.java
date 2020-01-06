@@ -3,7 +3,7 @@ package frc.robot;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.libs.CurrentBreaker;
 
@@ -34,9 +34,11 @@ public class DriveAuto {
 		DriveTrain.getInstance();
 
 		rotDrivePID = new PIDController(Calibration.AUTO_ROT_P, Calibration.AUTO_ROT_I, Calibration.AUTO_ROT_D,
-				Calibration.AUTO_ROT_F, RobotGyro.getInstance(), rot -> DriveTrain.autoSetRot(rot));
-
-		rotDrivePID.setAbsoluteTolerance(2); // degrees off
+				Calibration.AUTO_ROT_F);
+		// rotDrivePID = new PIDController(Calibration.AUTO_ROT_P, Calibration.AUTO_ROT_I, Calibration.AUTO_ROT_D,
+		// 		Calibration.AUTO_ROT_F, RobotGyro.getInstance(), rot -> DriveTrain.autoSetRot(rot));
+		
+		rotDrivePID.setTolerance(2); // degrees off
 		// rotDrivePID.setToleranceBuffer(3);
 
 		DriveTrain.setDriveMMAccel(Calibration.DT_MM_ACCEL);
@@ -132,8 +134,8 @@ public class DriveAuto {
 	}
 
 	public static void stopTurning() {
-		rotDrivePID.setSetpoint(rotDrivePID.get());
-		rotDrivePID.disable();
+		rotDrivePID.setSetpoint(rotDrivePID.calculate(RobotGyro.getAngle())); // changed 1/6/20
+		// TO DO  - rotDrivePID.disable();
 		DriveTrain.stopDriveAndTurnMotors();
 	}
 
@@ -192,7 +194,7 @@ public class DriveAuto {
 
 		DriveTrain.setTurnOrientation(DriveTrain.angleToPosition(0), DriveTrain.angleToPosition(0),
 				DriveTrain.angleToPosition(0), DriveTrain.angleToPosition(0), true);
-		rotDrivePID.disable();
+		// TO DO  - rotDrivePID.disable();
 	}
 
 	public static void tick() {
@@ -220,7 +222,7 @@ public class DriveAuto {
 		// SmartDashboard.putNumber("Decel cycles", cyclesToDecelerate);
 		// SmartDashboard.putNumber("Cycles left", cyclesLeft);
 		// SmartDashboard.putNumber("Int Setpoint", interimTurnSetpoint);
-		SmartDashboard.putNumber("ROT PID ERROR", rotDrivePID.getError());
+		SmartDashboard.putNumber("ROT PID ERROR", rotDrivePID.getPositionError());
 		SmartDashboard.putNumber("Drive Train Velocity", DriveTrain.getDriveVelocity());
 		SmartDashboard.putBoolean("HasArrived", hasArrived());
 		SmartDashboard.putBoolean("TurnCompleted", turnCompleted());
@@ -231,8 +233,7 @@ public class DriveAuto {
 		if (SmartDashboard.getBoolean("Tune Drive/Turn PIDs", false)) {
 			rotDrivePID.setPID(SmartDashboard.getNumber("ROT P", Calibration.AUTO_ROT_P),
 					SmartDashboard.getNumber("ROT I", Calibration.AUTO_ROT_I),
-					SmartDashboard.getNumber("ROT D", Calibration.AUTO_ROT_D),
-					SmartDashboard.getNumber("ROT F", Calibration.AUTO_ROT_F));
+					SmartDashboard.getNumber("ROT D", Calibration.AUTO_ROT_D));
 
 			DriveTrain.setDrivePIDValues(SmartDashboard.getNumber("AUTO DRIVE P", Calibration.AUTO_DRIVE_P),
 					SmartDashboard.getNumber("AUTO DRIVE I", Calibration.AUTO_DRIVE_I),

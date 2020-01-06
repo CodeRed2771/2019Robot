@@ -3,10 +3,11 @@ package frc.robot;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.controller.PIDController;
 
-public class DriveTrain implements PIDOutput {
+public class DriveTrain {
 
 	private static DriveTrain instance;
 	public static Module moduleA, moduleB, moduleC, moduleD;
@@ -48,10 +49,10 @@ public class DriveTrain implements PIDOutput {
 		// PID is for PID drive not for the modules
 		// DVV - I don't believe we're using a mode that uses this
 		pidControllerRot = new PIDController(Calibration.DT_ROT_PID_P, Calibration.DT_ROT_PID_I,
-				Calibration.DT_ROT_PID_D, RobotGyro.getGyro(), this);
-		pidControllerRot.setInputRange(-180.0f, 180.0f);
-		pidControllerRot.setOutputRange(-1.0, 1.0);
-		pidControllerRot.setContinuous(true);
+				Calibration.DT_ROT_PID_D);
+		// TO DO pidControllerRot.setInputRange(-180.0f, 180.0f);
+		// TO DO pidControllerRot.setOutputRange(-1.0, 1.0);
+		// TO DO pidControllerRot.setContinuous(true);
 	}
 
 	public static void setFollowerFix(boolean enable) {
@@ -521,8 +522,8 @@ public class DriveTrain implements PIDOutput {
 				+ (strafe * Math.sin(RobotGyro.getGyroAngleInRad()));
 		strafe = (-fwd * Math.sin(RobotGyro.getGyroAngleInRad())) + (strafe * Math.cos(RobotGyro.getGyroAngleInRad()));
 		fwd = temp;
-		if (!pidControllerRot.isEnabled())
-			pidControllerRot.enable();
+		// if (!pidControllerRot.isEnabled())
+		// 	pidControllerRot.enable();
 		if (Math.abs(fwd) < .15 && Math.abs(strafe) < .15) {
 			pidFWD = 0;
 			pidSTR = 0;
