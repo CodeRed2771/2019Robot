@@ -189,13 +189,13 @@ public class DriveAuto {
 	// setRotationalPowerOutput(maxPower);
 	// }
 	//
-	public static void continuousDrive(double inches, double maxPower) {
-		setRotationalPowerOutput(maxPower);
+	// public static void continuousDrive(double inches, double maxPower) {
+	// 	setRotationalPowerOutput(maxPower);
 
-		DriveTrain.setTurnOrientation(DriveTrain.angleToPosition(0), DriveTrain.angleToPosition(0),
-				DriveTrain.angleToPosition(0), DriveTrain.angleToPosition(0), true);
-		// TO DO  - rotDrivePID.disable();
-	}
+	// 	DriveTrain.setTurnOrientation(DriveTrain.angleToPosition(0), DriveTrain.angleToPosition(0),
+	// 			DriveTrain.angleToPosition(0), DriveTrain.angleToPosition(0), true);
+	// 	// TO DO  - rotDrivePID.disable();
+	// }
 
 	public static void tick() {
 		// this is called roughly 50 times per second
@@ -298,9 +298,9 @@ public class DriveAuto {
 		
 	}
 
-	private static void setRotationalPowerOutput(double powerLevel) {
-		rotDrivePID.setOutputRange(-powerLevel, powerLevel);
-	}
+	// private static void setRotationalPowerOutput(double powerLevel) {
+	// 	rotDrivePID.setOutputRange(-powerLevel, powerLevel);
+	// }
 
 	public static double getDistanceTravelled() {
 		return Math.abs(convertTicksToInches(DriveTrain.getDriveEnc()));
@@ -318,13 +318,13 @@ public class DriveAuto {
 		return turnCompleted(1); // allow 1 degree of error by default
 	}
 
-	public static void setPIDstate(boolean isEnabled) {
-		if (isEnabled) {
-			rotDrivePID.enable();
-		} else {
-			rotDrivePID.disable();
-		}
-	}
+	// public static void setPIDstate(boolean isEnabled) {
+	// 	if (isEnabled) {
+	// 		rotDrivePID.enable();
+	// 	} else {
+	// 		rotDrivePID.disable();
+	// 	}
+	// }
 
 	public static void resetDriveCurrentBreaker() {
 		driveCurrentBreaker.reset();
@@ -334,9 +334,9 @@ public class DriveAuto {
 		return driveCurrentBreaker.tripped();
 	}
 
-	public static void disable() {
-		setPIDstate(false);
-	}
+	// public static void disable() {
+	// 	setPIDstate(false);
+	// }
 
 	private static int convertToTicks(double inches) {
 		return (int) (inches * Calibration.DRIVE_DISTANCE_TICKS_PER_INCH);

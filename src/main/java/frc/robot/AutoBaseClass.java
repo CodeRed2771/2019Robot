@@ -122,9 +122,9 @@ public abstract class AutoBaseClass {
 //		DriveAuto.continuousTurn(degrees, maxPower);
 //	}
 	 
-	public void continuousDrive(double inches, double maxPower) {
-		DriveAuto.continuousDrive(inches, maxPower);
-	}
+	// public void continuousDrive(double inches, double maxPower) {
+	// 	DriveAuto.continuousDrive(inches, maxPower);
+	// }
 	
 	public Position robotPosition() {
 		return mRobotPosition;
