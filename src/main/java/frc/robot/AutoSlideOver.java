@@ -16,33 +16,33 @@ public class AutoSlideOver extends AutoBaseClass {
 		if (isRunning()) {
 
 			switch (getCurrentStep()) {
-			case 0:
-				setTimerAndAdvanceStep(2000);
-				if (slideDirection() == Direction.LEFT) {
-					driveInches(-13, 70, .2);
-				} else {
-					driveInches(-13, -70, .2);
-				}
-				break;
-			case 1:
-				if (driveCompleted())
-					advanceStep();
-				break;
-			case 2:
-				setTimerAndAdvanceStep(2000);
-				if (slideDirection() == Direction.LEFT) {
-					driveInches(13, -70, .2);
-				} else {
-					driveInches(13, 70, .2);
-				}
-				break;
-			case 3:
-				if (driveCompleted())
-					advanceStep();
-				break;
-			case 4:
-				stop();
-				break;
+				case 0:
+					setTimerAndAdvanceStep(2000);
+					if (slideDirection() == Direction.LEFT) {
+						driveInches(-13, 70, .2);
+					} else {
+						driveInches(-13, -70, .2);
+					}
+					break;
+				case 1:
+					if (driveCompleted())
+						advanceStep();
+					break;
+				case 2:
+					setTimerAndAdvanceStep(2000);
+					if (slideDirection() == Direction.LEFT) {
+						driveInches(13, -70, .2);
+					} else {
+						driveInches(13, 70, .2);
+					}
+					break;
+				case 3:
+					if (driveCompleted())
+						advanceStep();
+					break;
+				case 4:
+					stop();
+					break;
 
 			}
 		}
